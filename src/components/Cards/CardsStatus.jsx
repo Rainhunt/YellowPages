@@ -5,8 +5,9 @@ import { Typography } from '@mui/material';
 import YellowCards from './YellowCards';
 import { useCards } from '../../providers/CardProvider';
 import Centered from '../Centered';
+import YellowCard from './YellowCard';
 
-export default function CardsStatus() {
+export default function CardsStatus({ type }) {
     const { isLoading, error, cards, getCards } = useCards();
 
     useEffect(() => { getCards() }, []);
@@ -22,8 +23,13 @@ export default function CardsStatus() {
             Oops... It seems like no cards match your search.
         </Typography>
     );
-    if (cards) return (
-        < YellowCards cards={cards} />
-    )
+    if (cards) {
+        switch (type) {
+            case "cards":
+                return < YellowCards cards={cards} />
+            case "card":
+                return <YellowCard cardData={cards} />
+        }
+    }
     return null;
 }

@@ -4,7 +4,7 @@ import { getCardData } from '../services/cardApi';
 
 const CardContext = createContext();
 
-export default function CardProvider({ children }) {
+export default function CardProvider({ children, fetch }) {
     const [cards, setCards] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
@@ -14,7 +14,7 @@ export default function CardProvider({ children }) {
     const getCards = useCallback(async () => {
         setIsLoading(true);
         try {
-            const cardData = await getCardData();
+            const cardData = await fetch;
             setCards(cardData);
             setSnack("Retrieved all cards!");
         } catch (err) {

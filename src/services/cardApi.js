@@ -25,6 +25,10 @@ export async function getCardData(cardId) {
 //     }
 // }
 
+export async function createCard(cardData) {
+
+}
+
 // export async function deleteCard(cardId) {
 
 // }

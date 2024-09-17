@@ -4,6 +4,7 @@ import ErrorPage from "../pages/error/ErrorPage";
 import CardsPage from "../pages/cards/CardsPage";
 import AboutPage from "../pages/about/AboutPage";
 import LoginPage from "../pages/login/LoginPage";
+import ViewCard from "../pages/viewCard/ViewCard";
 
 export default function Router() {
     return (
@@ -12,7 +13,7 @@ export default function Router() {
             <Route path={ROUTES.CARDS} element={<CardsPage />} />
             <Route path={ROUTES.ABOUT} element={<AboutPage />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
-            {/* <Route path={ROUTES.CARD_INFO + "/:id"} element={<CardDetailsPage />} /> */}
+            <Route path={ROUTES.CARD_INFO + "/:id"} element={<ViewCard />} />
 
             <Route path="*" element={<ErrorPage />} />
         </Routes>

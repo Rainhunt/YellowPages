@@ -1,4 +1,4 @@
-import { Avatar, IconButton, Menu, MenuItem, Tooltip } from '@mui/material'
+import { Avatar, Divider, IconButton, Menu, MenuItem, Tooltip } from '@mui/material'
 import React from 'react'
 import useMenu from '../hooks/useMenu'
 import useSignin from '../hooks/useSignin';
@@ -51,6 +51,10 @@ export default function ProfileMenu() {
                     },
                 }}
             >
+                <MenuItem>
+                    My Account
+                </MenuItem>
+                <Divider />
                 <MenuItem onClick={() => {
                     handleLogout();
                     handleClose();
