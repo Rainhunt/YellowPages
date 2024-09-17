@@ -12,5 +12,5 @@ export default async function post(url, data, header) {
         throw new Error(message);
     }
 
-    return await response.json();
+    return await response.text();
 }

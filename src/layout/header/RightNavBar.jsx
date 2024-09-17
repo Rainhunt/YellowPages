@@ -2,9 +2,9 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import React from 'react'
 import { useTheme } from '../../providers/AppThemeProvider';
 import { useUser } from '../../providers/UserProvider';
-import ProfileButton from '../../components/profileButton';
 import SigninButtons from '../../components/SigninButtons';
 import { Box, IconButton } from '@mui/material'
+import ProfileMenu from '../../components/ProfileMenu';
 
 export default function RightNavBar() {
     const { toggleDarkMode } = useTheme();
@@ -19,7 +19,7 @@ export default function RightNavBar() {
             >
                 <DarkModeIcon />
             </IconButton>
-            {userData ? <ProfileButton /> : <SigninButtons />}
+            {userData ? <ProfileMenu /> : <SigninButtons />}
         </Box>
     )
 }

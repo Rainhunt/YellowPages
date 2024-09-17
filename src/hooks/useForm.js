@@ -9,7 +9,7 @@ export default function useForm(initialForm, schema, handleSubmit) {
         const joiSchema = Joi.object({ [name]: schema[name] });
         const { error } = joiSchema.validate({ [name]: value });
         return error ? error.details[0].message : null;
-    });
+    }, []);
 
     const handleChange = useCallback((e) => {
         const name = e.target.name;

@@ -9,9 +9,9 @@ import useSignin from '../../hooks/useSignin'
 import { useUser } from '../../providers/UserProvider'
 import Centered from '../../components/Centered'
 import Spinner from '../../components/Spinner'
-import ErrorMessage from '../../components/ErrorMessage'
-import { Grid, TextField } from '@mui/material'
+import { Grid } from '@mui/material'
 import FormButton from '../../components/Forms/FormButton'
+import { useEffect } from 'react'
 
 export default function LoginForm() {
     const { isLoading, error: loginError, handleLogin } = useSignin()
@@ -19,7 +19,9 @@ export default function LoginForm() {
 
     const { userData } = useUser();
     const navigate = useNavigate();
-    if (userData) navigate(ROUTES.ROOT, { replace: true });
+    useEffect(() => {
+        if (userData) navigate(ROUTES.ROOT, { replace: true });
+    }, []);
     if (isLoading) return (
         <Centered sx={{ flexGrow: 1 }}>
             <Spinner />

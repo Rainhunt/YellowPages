@@ -15,7 +15,6 @@ export default function useSignin() {
     const navigate = useNavigate();
     const setSnack = useSnack();
 
-
     const handleLogin = useCallback(async (loginData) => {
         setIsLoading(true);
         try {
@@ -29,7 +28,12 @@ export default function useSignin() {
             setSnack(err.message, "filled", "error");
         }
         setIsLoading(false);
+    }, []);
+
+    const handleLogout = useCallback(() => {
+        setToken();
+        updateUser();
     });
 
-    return { isLoading, error, handleLogin }
+    return { isLoading, error, handleLogin, handleLogout }
 }
