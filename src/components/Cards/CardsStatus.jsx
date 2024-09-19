@@ -8,9 +8,11 @@ import Centered from '../Centered';
 import YellowCard from './YellowCard';
 
 export default function CardsStatus({ type }) {
-    const { isLoading, error, cards, getCards } = useCards();
+    const { isLoading, error, filteredCards: cards, getCards } = useCards();
 
-    useEffect(() => { getCards() }, []);
+    useEffect(() => {
+        getCards();
+    }, []);
 
     if (isLoading) return (
         <Centered sx={{ flexGrow: 1 }}>
@@ -19,9 +21,9 @@ export default function CardsStatus({ type }) {
     );
     if (error) return <ErrorMessage message={error} />
     if (cards && cards.length === 0) return (
-        <Typography m={2}>
+        < Typography m={2} >
             Oops... It seems like no cards match your search.
-        </Typography>
+        </Typography >
     );
     if (cards) {
         switch (type) {

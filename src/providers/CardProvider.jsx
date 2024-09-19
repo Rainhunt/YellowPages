@@ -1,13 +1,19 @@
-import React, { createContext, useCallback, useContext, useState } from 'react'
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useSnack } from './LayoutProvider.jsx/SnackProvider';
-import { getCardData } from '../services/cardApi';
+import { useUser } from './UserProvider';
 
 const CardContext = createContext();
 
-export default function CardProvider({ children, fetch }) {
+export default function CardProvider({ children, fetch, filter }) {
     const [cards, setCards] = useState([]);
+    const [filteredCards, setFilteredCards] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
+
+    const { userData } = useUser();
+    useEffect(() => {
+        filter ? setFilteredCards(filter(cards, userData._id)) : setFilteredCards(cards);
+    }, [cards]);
 
     const setSnack = useSnack();
 
@@ -39,7 +45,7 @@ export default function CardProvider({ children, fetch }) {
     });
 
     return (
-        <CardContext.Provider value={{ cards, isLoading, error, getCards, handleDelete, handleEdit, handleLike }}>
+        <CardContext.Provider value={{ filteredCards, isLoading, error, getCards, setFilteredCards, handleDelete, handleEdit, handleLike }}>
             {children}
         </CardContext.Provider>
     )

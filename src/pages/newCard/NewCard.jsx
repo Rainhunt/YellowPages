@@ -5,18 +5,19 @@ import LoginForm from '../../forms/login/LoginForm'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../providers/UserProvider';
 import ROUTES from '../../routes/routerModel';
+import NewCardForm from '../../forms/newCard/NewCardForm';
 
-export default function LoginPage() {
+export default function NewCard() {
     const { userData } = useUser();
     const navigate = useNavigate();
     useEffect(() => {
-        if (userData) navigate(ROUTES.ROOT, { replace: true });
+        if (!userData || !userData.isBusiness) navigate(ROUTES.ROOT, { replace: true });
     }, []);
 
     return (
         <Container>
-            <PageHeader title="Welcome to Login Page" subtitle="Here you can login" />
-            <LoginForm />
+            <PageHeader title="Welcome to the New Card Page" subtitle="Here you can create a new card" />
+            <NewCardForm />
         </Container>
     )
 }

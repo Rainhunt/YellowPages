@@ -1,17 +1,19 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
-import { getUser } from '../services/jwtLocal';
+import { getToken, getUser } from '../services/jwtLocal';
 
 const UserContext = createContext();
 
 export default function UserProvider({ children }) {
+    const [token, setToken] = useState(getToken());
     const [userData, setUserData] = useState(getUser());
 
     const updateUser = useCallback(() => {
+        setToken(getToken());
         setUserData(getUser());
     });
 
     return (
-        <UserContext.Provider value={{ userData, updateUser }}>
+        <UserContext.Provider value={{ token, userData, updateUser }}>
             {children}
         </UserContext.Provider>
     )

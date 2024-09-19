@@ -29,8 +29,8 @@ export default function LeftNavBar() {
                 />
             </NavBarLink>
             <NavBarLink to={ROUTES.ABOUT}>About</NavBarLink>
-            <NavBarLink>Fav</NavBarLink>
-            <NavBarLink>Mine</NavBarLink>
+            <NavBarLink to={ROUTES.FAV_CARDS}>Fav</NavBarLink>
+            <NavBarLink to={ROUTES.MY_CARDS}>Mine</NavBarLink>
             <NavBarLink>Sandbox</NavBarLink>
         </Box>
     )

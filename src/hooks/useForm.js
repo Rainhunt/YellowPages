@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 
 export default function useForm(initialForm, schema, handleSubmit) {
     const [data, setData] = useState(initialForm);
+    const [token, setToken] = useState();
     const [errors, setErrors] = useState({});
 
     const validateField = useCallback((name, value) => {
@@ -41,8 +42,8 @@ export default function useForm(initialForm, schema, handleSubmit) {
     }, [initialForm]);
 
     const onSubmit = useCallback(() => {
-        handleSubmit(data);
-    }, [data])
+        handleSubmit(data, token);
+    }, [data, token]);
 
-    return { data, errors, handleChange, validateForm, onSubmit, onReset }
+    return { data, errors, setToken, handleChange, validateForm, onSubmit, onReset }
 }

@@ -3,6 +3,7 @@ import { useLeftNav } from '../../providers/LayoutProvider.jsx/DrawerProvider'
 import { Divider, Drawer, IconButton } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import NavBarLink from '../../components/NavBarLink';
+import ROUTES from '../../routes/routerModel';
 
 
 export default function LeftNav() {
@@ -17,7 +18,7 @@ export default function LeftNav() {
             >
                 <ArrowBack />
             </IconButton>
-            <NavBarLink>Add Post</NavBarLink>
+            <NavBarLink to={ROUTES.CREATE_CARD}>Add Post</NavBarLink>
             <NavBarLink>Login</NavBarLink>
             <NavBarLink>Sign Up</NavBarLink>
             <NavBarLink>FAQs</NavBarLink>

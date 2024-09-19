@@ -3,6 +3,7 @@ export default async function post(url, data, header) {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
+            ...header
         },
         body: JSON.stringify(data)
     });
@@ -12,5 +13,10 @@ export default async function post(url, data, header) {
         throw new Error(message);
     }
 
-    return await response.text();
+    const text = await response.text();
+    try {
+        return JSON.parse(text);
+    } catch (err) {
+        return text;
+    }
 }

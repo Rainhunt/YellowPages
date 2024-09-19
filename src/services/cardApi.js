@@ -1,3 +1,6 @@
+import get from "./requests/get";
+import post from "./requests/post";
+
 const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards";
 
 export async function getCardData(cardId) {
@@ -15,18 +18,18 @@ export async function getCardData(cardId) {
     }
 }
 
-// export async function getMyCards() {
-//     try {
-//         const request = `${apiUrl}/my-cards`
-//         const response = await fetch(request);
-//         return await response.json();
-//     } catch (err) {
-//         return Promise.reject(err.message);
-//     }
-// }
+export async function getMyCards(xAuthToken) {
+    try {
+        const request = `${apiUrl}/my-cards`
+        const response = await get(request, { "x-auth-token": xAuthToken });
+        return response;
+    } catch (err) {
+        return Promise.reject(err.message);
+    }
+}
 
-export async function createCard(cardData) {
-
+export async function createCard(cardData, token) {
+    return await post(apiUrl, cardData, { "x-auth-token": token });
 }
 
 // export async function deleteCard(cardId) {
