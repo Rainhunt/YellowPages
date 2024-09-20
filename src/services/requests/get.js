@@ -8,5 +8,10 @@ export default async function get(url, header) {
         throw new Error(message);
     }
 
-    return await response.json();
+    const text = await response.text();
+    try {
+        return JSON.parse(text);
+    } catch (err) {
+        return text;
+    }
 }

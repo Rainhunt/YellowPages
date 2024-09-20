@@ -29,6 +29,7 @@ export default function YellowCard({ cardData }) {
             </CardActionArea>
             <StandardActionBar
                 cardId={cardData._id}
+                likes={cardData.likes}
             />
         </Card>
     )

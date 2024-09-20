@@ -1,7 +1,9 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useSnack } from './LayoutProvider.jsx/SnackProvider';
 import { useUser } from './UserProvider';
+import patch from '../services/requests/patch';
 
+const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/";
 const CardContext = createContext();
 
 export default function CardProvider({ children, fetch, filter }) {
@@ -10,7 +12,7 @@ export default function CardProvider({ children, fetch, filter }) {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
-    const { userData } = useUser();
+    const { userData, token } = useUser();
     useEffect(() => {
         filter ? setFilteredCards(filter(cards, userData._id)) : setFilteredCards(cards);
     }, [cards]);
@@ -40,8 +42,7 @@ export default function CardProvider({ children, fetch, filter }) {
     });
 
     const handleLike = useCallback(async (cardId) => {
-        console.log("liking card");
-        //link to cardApi
+        return await patch(`${apiUrl}${cardId}`, {}, { "x-auth-token": token });
     });
 
     return (
