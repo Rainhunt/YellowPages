@@ -11,10 +11,12 @@ export default function YellowCard({ cardData }) {
 
     return (
         <Card sx={{
+            display: "flex",
+            flexDirection: "column",
             width: 250,
             m: 2
         }}>
-            <CardActionArea onClick={() => navigate(`${ROUTES.CARD_INFO}/${cardData._id}`)}>
+            <CardActionArea onClick={() => navigate(`${ROUTES.CARD_INFO}/${cardData._id}`)} sx={{ flexGrow: 1 }}>
                 <StandardHeader
                     image={cardData.image.url}
                     alt={cardData.image.alt}

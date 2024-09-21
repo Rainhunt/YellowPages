@@ -10,7 +10,7 @@ import { useUser } from "../../../providers/UserProvider";
 
 export default function StandardActionBar({ cardId, likes }) {
     const { userData } = useUser()
-    const [liked, setLiked] = useState(likes.includes(userData._id));
+    const [liked, setLiked] = useState(userData ? likes.includes(userData._id) : false);
 
     const { handleDelete, handleEdit, handleLike } = useCards();
     const navigate = useNavigate();

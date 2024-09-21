@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useState } fr
 import { useSnack } from './LayoutProvider.jsx/SnackProvider';
 import { useUser } from './UserProvider';
 import patch from '../services/requests/patch';
+import del from '../services/requests/delete';
 
 const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/";
 const CardContext = createContext();
@@ -32,8 +33,18 @@ export default function CardProvider({ children, fetch, filter }) {
     });
 
     const handleDelete = useCallback(async (cardId) => {
-        console.log("deleting card");
-        //link to cardApi
+        try {
+            const response = await del(`${apiUrl}${cardId}`, {}, { "x-auth-token": token });
+            if (response) {
+                setIsLoading(true);
+                cards.splice(cards.findIndex((card) => card._id === cardId), 1);
+                setSnack(`Successfully deleted '${response.title}'`);
+                setIsLoading(false);
+            }
+        } catch (err) {
+            console.log(err);
+            setSnack(err.message, "filled", "error");
+        }
     });
 
     const handleEdit = useCallback(async (cardId) => {
