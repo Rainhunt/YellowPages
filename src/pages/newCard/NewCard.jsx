@@ -1,11 +1,10 @@
 import { Container } from '@mui/material'
 import React, { useEffect } from 'react'
 import PageHeader from '../../components/PageHeader'
-import LoginForm from '../../forms/login/LoginForm'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../providers/UserProvider';
 import ROUTES from '../../routes/routerModel';
-import NewCardForm from '../../forms/newCard/NewCardForm';
+import NewCardForm from '../../forms/cards/NewCardForm';
 
 export default function NewCard() {
     const { userData } = useUser();

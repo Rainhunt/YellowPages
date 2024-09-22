@@ -1,5 +1,6 @@
 import get from "./requests/get";
 import post from "./requests/post";
+import put from "./requests/put";
 
 const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards";
 
@@ -32,6 +33,7 @@ export async function createCard(cardData, token) {
     return await post(apiUrl, cardData, { "x-auth-token": token });
 }
 
-// export async function deleteCard(cardId) {
-
-// }
+export async function editCard(cardData, token, id) {
+    console.log(cardData);
+    return await put(`${apiUrl}/${id}`, cardData, { "x-auth-token": token });
+}

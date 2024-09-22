@@ -3,19 +3,21 @@ import useForm from '../../hooks/useForm'
 import Field from '../../components/Forms/Field'
 import Centered from '../../components/Centered'
 import Spinner from '../../components/Spinner'
-import useCards from '../../hooks/useCards'
 import initialCard from './initialCard'
 import cardSchema from './cardSchema'
 import { useEffect } from 'react'
 import { getToken } from '../../services/jwtLocal'
 
-export default function NewCardForm() {
-    const { isLoading, error: networkError, handleCreateCard } = useCards()
-    const { data, errors: validationErrors, setToken, handleChange, validateForm, onSubmit, onReset } = useForm(initialCard, cardSchema, handleCreateCard);
+export default function CardForm({ isLoading, networkError, handleSubmit, setRef, card }) {
+    const { data, errors: validationErrors, setToken, handleChange, validateForm, onSubmit, onReset } = useForm(card ? card : initialCard, cardSchema, handleSubmit);
 
     useEffect(() => {
         setToken(getToken());
     }, []);
+
+    useEffect(() => {
+        if (setRef) setRef(data);
+    }, [data]);
 
     if (isLoading) return (
         <Centered sx={{ flexGrow: 1 }}>

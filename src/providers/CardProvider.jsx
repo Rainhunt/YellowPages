@@ -3,6 +3,8 @@ import { useSnack } from './LayoutProvider.jsx/SnackProvider';
 import { useUser } from './UserProvider';
 import patch from '../services/requests/patch';
 import del from '../services/requests/delete';
+import { useNavigate } from 'react-router-dom';
+import ROUTES from '../routes/routerModel';
 
 const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/";
 const CardContext = createContext();
@@ -19,6 +21,7 @@ export default function CardProvider({ children, fetch, filter }) {
     }, [cards]);
 
     const setSnack = useSnack();
+    const navigate = useNavigate();
 
     const getCards = useCallback(async () => {
         setIsLoading(true);
@@ -42,14 +45,12 @@ export default function CardProvider({ children, fetch, filter }) {
                 setIsLoading(false);
             }
         } catch (err) {
-            console.log(err);
             setSnack(err.message, "filled", "error");
         }
     });
 
     const handleEdit = useCallback(async (cardId) => {
-        console.log("editing card");
-        //link to cardApi
+        navigate(`${ROUTES.EDIT_CARD}/${cardId}`);
     });
 
     const handleLike = useCallback(async (cardId) => {

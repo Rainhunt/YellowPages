@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import ROUTES from "../routes/routerModel";
 import { useState } from "react";
 import { useSnack } from "../providers/LayoutProvider.jsx/SnackProvider";
-import { createCard } from "../services/cardApi";
+import { createCard, editCard } from "../services/cardApi";
 import normalizeCard from "../normalization/card/normalizeCard";
 
-export default function useCards() {
+export default function useCardForms(id) {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState({});
 
@@ -27,5 +27,19 @@ export default function useCards() {
         setIsLoading(false);
     }, []);
 
-    return { isLoading, error, handleCreateCard }
+    const handleEditCard = useCallback(async (cardData, token) => {
+        setIsLoading(true);
+        try {
+            const card = normalizeCard(cardData);
+            const editedCard = await editCard(card, token, id);
+            setError(null);
+            navigate(`${ROUTES.CARD_INFO}/${editedCard._id}`);
+        } catch (err) {
+            setError(err.message);
+            setSnack(err.message, "filled", "error");
+        }
+        setIsLoading(false);
+    }, []);
+
+    return { isLoading, error, handleCreateCard, handleEditCard }
 }

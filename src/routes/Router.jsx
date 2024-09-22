@@ -8,6 +8,7 @@ import ViewCard from "../pages/viewCard/ViewCard";
 import MyCards from "../pages/myCards/MyCards";
 import NewCard from "../pages/newCard/NewCard";
 import FavoriteCards from "../pages/favoriteCards/FavoriteCards";
+import EditCard from "../pages/editCard/EditCard";
 
 export default function Router() {
     return (
@@ -19,6 +20,7 @@ export default function Router() {
             <Route path={ROUTES.MY_CARDS} element={<MyCards />} />
             <Route path={ROUTES.FAV_CARDS} element={<FavoriteCards />} />
             <Route path={ROUTES.CARD_INFO + "/:id"} element={<ViewCard />} />
+            <Route path={ROUTES.EDIT_CARD + "/:id"} element={<EditCard />} />
             <Route path={ROUTES.CREATE_CARD} element={<NewCard />} />
 
             <Route path="*" element={<ErrorPage />} />
