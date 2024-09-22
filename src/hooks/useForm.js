@@ -30,6 +30,12 @@ export default function useForm(initialForm, schema, handleSubmit) {
         setData((prev) => ({ ...prev, [name]: value }));
     }, [validateField]);
 
+    const handleChangeCheckbox = useCallback((e) => {
+        const name = e.target.name;
+        const value = e.target.checked;
+        setData((prev) => ({ ...prev, [name]: value }));
+    }, []);
+
     const validateForm = useCallback(() => {
         const joiSchema = Joi.object(schema);
         const { error } = joiSchema.validate(data);
@@ -45,5 +51,5 @@ export default function useForm(initialForm, schema, handleSubmit) {
         handleSubmit(data, token);
     }, [data, token]);
 
-    return { data, errors, setToken, handleChange, validateForm, onSubmit, onReset }
+    return { data, errors, setToken, handleChange, handleChangeCheckbox, validateForm, onSubmit, onReset }
 }

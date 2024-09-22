@@ -9,6 +9,7 @@ import MyCards from "../pages/myCards/MyCards";
 import NewCard from "../pages/newCard/NewCard";
 import FavoriteCards from "../pages/favoriteCards/FavoriteCards";
 import EditCard from "../pages/editCard/EditCard";
+import SignupPage from "../pages/signup/SignupPage";
 
 export default function Router() {
     return (
@@ -16,6 +17,7 @@ export default function Router() {
             <Route path={ROUTES.ROOT} element={<CardsPage />} />
             <Route path={ROUTES.CARDS} element={<CardsPage />} />
             <Route path={ROUTES.ABOUT} element={<AboutPage />} />
+            <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
             <Route path={ROUTES.LOGIN} element={<LoginPage />} />
             <Route path={ROUTES.MY_CARDS} element={<MyCards />} />
             <Route path={ROUTES.FAV_CARDS} element={<FavoriteCards />} />
