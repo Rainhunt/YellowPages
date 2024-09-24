@@ -6,6 +6,7 @@ import CardsStatus from '../../components/Cards/CardsStatus';
 import PageHeader from '../../components/PageHeader';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../../routes/routerModel';
+import CardSearch from '../../components/SearchBar/CardSearch';
 
 export default function MyCards() {
     const { token, userData } = useUser();
@@ -15,7 +16,7 @@ export default function MyCards() {
     }, []);
 
     return (
-        <CardProvider fetch={getMyCards(token)}>
+        <CardProvider fetch={getMyCards(token)} searchBar={<CardSearch />}>
             <PageHeader
                 title="My Cards"
                 subtitle="On this page you can find cards you created."

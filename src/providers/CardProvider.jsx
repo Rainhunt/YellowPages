@@ -5,20 +5,37 @@ import patch from '../services/requests/patch';
 import del from '../services/requests/delete';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../routes/routerModel';
+import CardSearch from '../components/SearchBar/CardSearch';
 
 const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/";
 const CardContext = createContext();
 
-export default function CardProvider({ children, fetch, filter }) {
-    const [cards, setCards] = useState([]);
-    const [filteredCards, setFilteredCards] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState();
-
+export default function CardProvider({ children, fetch, filter, searchBar }) {
     const { userData, token } = useUser();
+
+    //all cards retrieved by the api call
+    const [cards, setCards] = useState([]);
+    //all cards the page should be able to display (e.g. all liked cards)
+    const [filteredCards, setFilteredCards] = useState([]);
     useEffect(() => {
         filter ? setFilteredCards(filter(cards, userData._id)) : setFilteredCards(cards);
     }, [cards]);
+    //filteredcards narrowed down by search parameters
+    const [searchParams, setSearchParams] = useState({});
+    const [searchCards, setSearchCards] = useState([]);
+    const useSearchParams = useCallback(() => {
+        let filteredToSearch = filteredCards;
+        for (const search in searchParams) {
+            filteredToSearch = searchParams[search](filteredToSearch);
+        }
+        setSearchCards(filteredToSearch);
+    }, [filteredCards, searchParams]);
+    useEffect(() => {
+        useSearchParams();
+    }, [filteredCards, searchParams]);
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
 
     const setSnack = useSnack();
     const navigate = useNavigate();
@@ -58,7 +75,8 @@ export default function CardProvider({ children, fetch, filter }) {
     });
 
     return (
-        <CardContext.Provider value={{ filteredCards, isLoading, error, getCards, setFilteredCards, handleDelete, handleEdit, handleLike }}>
+        <CardContext.Provider value={{ filteredCards, searchCards, isLoading, error, getCards, setSearchParams, handleDelete, handleEdit, handleLike }}>
+            {searchBar}
             {children}
         </CardContext.Provider>
     )

@@ -8,7 +8,7 @@ import Centered from '../Centered';
 import YellowCard from './YellowCard';
 
 export default function CardsStatus({ type }) {
-    const { isLoading, error, filteredCards: cards, getCards } = useCards();
+    const { isLoading, error, searchCards: cards, getCards } = useCards();
 
     useEffect(() => {
         getCards();

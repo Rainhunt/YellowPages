@@ -34,6 +34,5 @@ export async function createCard(cardData, token) {
 }
 
 export async function editCard(cardData, token, id) {
-    console.log(cardData);
     return await put(`${apiUrl}/${id}`, cardData, { "x-auth-token": token });
 }
