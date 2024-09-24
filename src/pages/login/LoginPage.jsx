@@ -7,6 +7,7 @@ import { useUser } from '../../providers/UserProvider';
 import ROUTES from '../../routes/routerModel';
 
 export default function LoginPage() {
+    //validate page auth
     const { userData } = useUser();
     const navigate = useNavigate();
     useEffect(() => {

@@ -5,8 +5,10 @@ import { useLeftNav } from '../../providers/LayoutProvider.jsx/DrawerProvider';
 import NavBarLink from '../../components/NavBarLink';
 import ROUTES from '../../routes/routerModel';
 import { Box, IconButton } from '@mui/material'
+import { useUser } from '../../providers/UserProvider';
 
 export default function LeftNavBar() {
+    const { userData } = useUser();
     const { toggleDrawerOpen } = useLeftNav();
 
     return (
@@ -29,9 +31,8 @@ export default function LeftNavBar() {
                 />
             </NavBarLink>
             <NavBarLink to={ROUTES.ABOUT}>About</NavBarLink>
-            <NavBarLink to={ROUTES.FAV_CARDS}>Fav</NavBarLink>
-            <NavBarLink to={ROUTES.MY_CARDS}>Mine</NavBarLink>
-            <NavBarLink>Sandbox</NavBarLink>
+            {userData && <NavBarLink to={ROUTES.FAV_CARDS}>Fav</NavBarLink>}
+            {userData && userData.isBusiness && <NavBarLink to={ROUTES.MY_CARDS}>Mine</NavBarLink>}
         </Box>
     )
 }

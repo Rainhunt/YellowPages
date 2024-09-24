@@ -7,6 +7,7 @@ import ROUTES from '../../routes/routerModel';
 import NewCardForm from '../../forms/cards/NewCardForm';
 
 export default function NewCard() {
+    //validate page auth
     const { userData } = useUser();
     const navigate = useNavigate();
     useEffect(() => {

@@ -9,10 +9,11 @@ import ROUTES from '../../routes/routerModel';
 import CardSearch from '../../components/SearchBar/CardSearch';
 
 export default function MyCards() {
+    //validate page auth
     const { token, userData } = useUser();
     const navigate = useNavigate();
     useEffect(() => {
-        if (!userData) navigate(ROUTES.ROOT, { replace: true });
+        if (!userData || !userData.isBusiness) navigate(ROUTES.ROOT, { replace: true });
     }, []);
 
     return (

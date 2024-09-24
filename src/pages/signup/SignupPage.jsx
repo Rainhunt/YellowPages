@@ -8,6 +8,7 @@ import ROUTES from '../../routes/routerModel';
 import SignupForm from '../../forms/signup/SignupForm';
 
 export default function SignupPage() {
+    //validate page auth
     const { userData } = useUser();
     const navigate = useNavigate();
     useEffect(() => {

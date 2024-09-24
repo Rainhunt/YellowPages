@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import Centered from '../../components/Centered';
 import YellowCard from '../../components/Cards/YellowCard';
 import { getCardData } from '../../services/cardApi';
@@ -10,8 +10,13 @@ import { useSnack } from '../../providers/LayoutProvider.jsx/SnackProvider';
 import normalizeCard from '../../normalization/card/normalizeCard';
 import mapCard from '../../normalization/card/mapCard';
 import useCardForms from '../../hooks/useCardForms';
+import { useUser } from '../../providers/UserProvider';
+import ROUTES from '../../routes/routerModel';
 
 export default function EditCard() {
+    const { userData } = useUser();
+    const navigate = useNavigate();
+
     const { id } = useParams();
     const [card, setCard] = useState();
     const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +29,8 @@ export default function EditCard() {
             try {
                 const response = await getCardData(id);
                 if (response) setCard(response);
+                //validate page auth
+                if (!userData || userData._id !== response.user_id) navigate(ROUTES.ROOT, { replace: true });
             } catch (err) {
                 setSnack(err.message);
             }

@@ -12,6 +12,7 @@ export default function CardActionBarVariants({ cardData, variant }) {
             return (
                 <StandardActionBar
                     cardId={cardData._id}
+                    userId={cardData.user_id}
                     likes={cardData.likes}
                 />
             );
