@@ -9,6 +9,7 @@ export default function FormButton({ children, variant = "contained", size = "me
             color={color}
             onClick={onClick}
             disabled={disabled}
+            sx={{ width: "100%" }}
         >
             {children}
         </Button>

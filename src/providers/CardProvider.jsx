@@ -1,16 +1,15 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
-import { useSnack } from './LayoutProvider.jsx/SnackProvider';
+import { useSnack } from './LayoutProvider/SnackProvider';
 import { useUser } from './UserProvider';
 import patch from '../services/requests/patch';
 import del from '../services/requests/delete';
 import { useNavigate } from 'react-router-dom';
 import ROUTES from '../routes/routerModel';
-import CardSearch from '../components/SearchBar/CardSearch';
 
 const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/";
 const CardContext = createContext();
 
-export default function CardProvider({ children, fetch, filter, searchBar }) {
+export default function CardProvider({ children, fetch, filter, searchBar, toRootOnDelete }) {
     const { userData, token } = useUser();
 
     //all cards retrieved by the api call
@@ -48,6 +47,8 @@ export default function CardProvider({ children, fetch, filter, searchBar }) {
             setSnack("Retrieved all cards!");
         } catch (err) {
             setError(err.message);
+            setSnack(err.message, "filled", "error");
+            navigate(ROUTES.CARDS);
         }
         setIsLoading(false);
     });
@@ -57,8 +58,9 @@ export default function CardProvider({ children, fetch, filter, searchBar }) {
             const response = await del(`${apiUrl}${cardId}`, {}, { "x-auth-token": token });
             if (response) {
                 setIsLoading(true);
-                cards.splice(cards.findIndex((card) => card._id === cardId), 1);
+                setCards((prev) => prev.filter(card => card._id !== cardId));
                 setSnack(`Successfully deleted '${response.title}'`);
+                if (toRootOnDelete) navigate(ROUTES.ROOT);
                 setIsLoading(false);
             }
         } catch (err) {

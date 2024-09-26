@@ -4,7 +4,7 @@ import React from 'react'
 export default function BulletPoint() {
     return (
         <Typography
-            color={"secondary"}
+            color="inherit"
         >
             {"\u2B24"}
         </Typography>

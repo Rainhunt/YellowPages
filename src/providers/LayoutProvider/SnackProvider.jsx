@@ -14,7 +14,7 @@ export default function SnackProvider({ children }) {
         setSnackColor(color);
         setSnackMessage(message);
         setIsSnackOpen(true);
-    });
+    }, []);
 
     return (
         <>

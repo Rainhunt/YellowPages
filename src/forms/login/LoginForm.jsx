@@ -44,7 +44,7 @@ export default function LoginForm() {
                 error={validationErrors.password}
                 required={true}
             />
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
                 <FormButton onClick={() => navigate(ROUTES.SIGNUP)}> Signup </FormButton>
             </Grid>
         </Form>

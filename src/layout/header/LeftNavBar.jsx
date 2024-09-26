@@ -1,7 +1,7 @@
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import Logo from '../../components/Logo';
-import { useLeftNav } from '../../providers/LayoutProvider.jsx/DrawerProvider';
+import { useLeftNav } from '../../providers/LayoutProvider/DrawerProvider';
 import NavBarLink from '../../components/NavBarLink';
 import ROUTES from '../../routes/routerModel';
 import { Box, IconButton } from '@mui/material'

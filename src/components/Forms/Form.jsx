@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import FormButton from './FormButton';
 import LoopIcon from '@mui/icons-material/Loop';
 import ROUTES from '../../routes/routerModel';
-import useForm from '../../hooks/useForm';
 
 export default function Form({ validateForm, onReset, onSubmit, title, sx, children }) {
     const navigate = useNavigate();
@@ -25,15 +24,15 @@ export default function Form({ validateForm, onReset, onSubmit, title, sx, child
             </Grid>
 
             <Grid container spacing={1} my={2} direction="row" width="100">
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={4} sx={{ display: "flex", justifyContent: "center" }}>
                     <FormButton color="error" onClick={() => navigate(ROUTES.ROOT)}>Cancel</FormButton>
                 </Grid>
 
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={4} sx={{ display: "flex", justifyContent: "center" }}>
                     <FormButton onClick={onReset}> <LoopIcon /> </FormButton>
                 </Grid>
 
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={12} sm={4} sx={{ display: "flex", justifyContent: "center" }}>
                     <FormButton onClick={onSubmit} disabled={!validateForm()}> Submit </FormButton>
                 </Grid>
             </Grid>

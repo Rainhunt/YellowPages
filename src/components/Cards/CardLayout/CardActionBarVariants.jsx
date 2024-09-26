@@ -14,6 +14,7 @@ export default function CardActionBarVariants({ cardData, variant }) {
                     cardId={cardData._id}
                     userId={cardData.user_id}
                     likes={cardData.likes}
+                    phone={cardData.phone}
                 />
             );
     }

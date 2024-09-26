@@ -2,7 +2,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../routes/routerModel";
 import { useState } from "react";
-import { useSnack } from "../providers/LayoutProvider.jsx/SnackProvider";
+import { useSnack } from "../providers/LayoutProvider/SnackProvider";
 import { createCard, editCard } from "../services/cardApi";
 import normalizeCard from "../normalization/card/normalizeCard";
 

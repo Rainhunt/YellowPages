@@ -1,4 +1,4 @@
-import { Container } from '@mui/material'
+import { Box } from '@mui/material'
 import React, { useEffect } from 'react'
 import PageHeader from '../../components/PageHeader'
 import { useNavigate } from 'react-router-dom';
@@ -15,9 +15,9 @@ export default function NewCard() {
     }, []);
 
     return (
-        <Container>
+        <Box my={6}>
             <PageHeader title="Welcome to the New Card Page" subtitle="Here you can create a new card" />
             <NewCardForm />
-        </Container>
+        </Box>
     )
 }

@@ -6,12 +6,12 @@ import { getCardData } from '../../services/cardApi';
 import CardForm from '../../forms/cards/CardForm';
 import Spinner from '../../components/Spinner';
 import CardProvider from '../../providers/CardProvider';
-import { useSnack } from '../../providers/LayoutProvider.jsx/SnackProvider';
 import normalizeCard from '../../normalization/card/normalizeCard';
 import mapCard from '../../normalization/card/mapCard';
 import useCardForms from '../../hooks/useCardForms';
 import { useUser } from '../../providers/UserProvider';
 import ROUTES from '../../routes/routerModel';
+import { useSnack } from '../../providers/LayoutProvider/SnackProvider';
 
 export default function EditCard() {
     const { userData } = useUser();
@@ -22,7 +22,7 @@ export default function EditCard() {
     const [isLoading, setIsLoading] = useState(false);
 
     const { handleEditCard } = useCardForms(id);
-    const { setSnack } = useSnack();
+    const setSnack = useSnack();
 
     useEffect(() => {
         const getCard = async () => {
@@ -32,7 +32,8 @@ export default function EditCard() {
                 //validate page auth
                 if (!userData || userData._id !== response.user_id) navigate(ROUTES.ROOT, { replace: true });
             } catch (err) {
-                setSnack(err.message);
+                navigate(ROUTES.ROOT);
+                setSnack(err.message, "filled", "error");
             }
         }
         setIsLoading(true);

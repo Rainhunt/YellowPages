@@ -15,7 +15,7 @@ export async function getCardData(cardId) {
         return data;
 
     } catch (err) {
-        throw new Error(err.message);
+        return Promise.reject(err.message);
     }
 }
 

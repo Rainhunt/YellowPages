@@ -5,7 +5,7 @@ import { useUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import ROUTES from "../routes/routerModel";
 import { useState } from "react";
-import { useSnack } from "../providers/LayoutProvider.jsx/SnackProvider";
+import { useSnack } from "../providers/LayoutProvider/SnackProvider";
 import normalizeUser from "../normalization/user/normalizeUser";
 
 export default function useSignin() {

@@ -9,7 +9,6 @@ export default function CardHeaderVariants({ cardData, variant }) {
                 <DisplayHeader
                     title={cardData.title}
                     subtitle={cardData.subtitle}
-                    description={cardData.description}
                 />
             )
         case "standard":

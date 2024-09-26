@@ -20,7 +20,7 @@ export default function CountryField({ setSearchParams, filteredCards }) {
             const country = card.address.country;
             if (!uniqueCountries.includes(country)) uniqueCountries.push(country);
         }
-        setCountries(uniqueCountries);
+        setCountries(uniqueCountries.sort());
     }, [filteredCards]);
 
     const [param, setParam] = useState([]);
@@ -33,7 +33,12 @@ export default function CountryField({ setSearchParams, filteredCards }) {
 
     return (
         <FormControl sx={{ m: 1, width: 300 }}>
-            <InputLabel id="countries-label">Countries</InputLabel>
+            <InputLabel id="countries-label" sx={{
+                color: "primary.contrastText",
+                "&.Mui-focused": {
+                    color: "inherit"
+                }
+            }}>Countries</InputLabel>
             <Select
                 labelId="countries-label"
                 multiple
@@ -45,6 +50,21 @@ export default function CountryField({ setSearchParams, filteredCards }) {
                 input={<OutlinedInput label="Countries" />}
                 renderValue={(selected) => selected.join(', ')}
                 MenuProps={menuProps}
+                sx={{
+                    color: "inherit",
+                    "& .MuiSelect-icon": {
+                        color: "inherit"
+                    },
+                    "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "inherit"
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "red"
+                    },
+                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "#626262"
+                    }
+                }}
             >
                 {countries.map((country) => (
                     <MenuItem key={country} value={country}>

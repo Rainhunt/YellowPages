@@ -12,17 +12,21 @@ export default function AppThemeProvider({ children }) {
         palette: {
             mode: isDark ? "dark" : "light",
             primary: {
-                light: "#FFFFFF",
-                main: "#FFFFFF",
-                dark: "#FFFFFF",
-                contrastText: "#000000",
+                light: "#FAC205",
+                main: "#FAC205",
+                dark: "#FAC205",
+                contrastText: "#FFFFFF",
             },
             secondary: {
-                light: "#E7BB2C",
+                light: "#FBF4AE",
                 main: "#E7BB2C",
-                dark: "#E7BB2C",
-                contrastText: "#FFFFFF",
-            }
+                dark: "#FFD73E",
+                contrastText: "#626262",
+            },
+            background: {
+                paper: isDark ? "#1B1C21" : "#F8E9B2",
+                default: "#F8E9B2",
+            },
         },
     });
     return (

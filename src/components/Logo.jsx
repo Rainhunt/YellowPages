@@ -13,7 +13,7 @@ export default function Logo({ sx }) {
             <BulletPoint />
             <Typography sx={{
                 margin: "0 5px",
-                fontWeight: "800"
+                fontWeight: "800",
             }}>
                 YELLOWPAGES
             </Typography>

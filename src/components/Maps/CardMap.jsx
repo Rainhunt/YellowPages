@@ -5,17 +5,19 @@ import Map from './Map';
 import Spinner from '../Spinner';
 import ErrorMessage from '../ErrorMessage';
 import { Paper } from '@mui/material';
+import { useSnack } from '../../providers/LayoutProvider/SnackProvider';
 
 export default function CardMap() {
     const { searchCards } = useCards();
     const [pos, setPos] = useState([]);
+    const setSnack = useSnack();
     useEffect(() => {
         const getCoordinates = async () => {
             try {
                 const coords = await getCoordinatesFromAddress(searchCards.address);
                 setPos(coords);
             } catch (err) {
-                console.log(err);
+                setSnack("Location not found", "filled", "error");
             }
         }
         getCoordinates();

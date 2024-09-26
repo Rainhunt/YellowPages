@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLeftNav } from '../../providers/LayoutProvider.jsx/DrawerProvider'
+import { useLeftNav } from '../../providers/LayoutProvider/DrawerProvider'
 import { Divider, Drawer, IconButton } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import NavBarLink from '../../components/NavBarLink';

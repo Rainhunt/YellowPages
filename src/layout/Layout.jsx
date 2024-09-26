@@ -2,6 +2,7 @@ import React from 'react'
 import Main from './main/Main'
 import Header from './header/Header'
 import { Box } from '@mui/material'
+import Footer from './footer/Footer'
 
 export default function Layout({ children }) {
     return (
@@ -21,6 +22,7 @@ export default function Layout({ children }) {
                 }}>
                 {children}
             </Main>
+            <Footer />
         </Box>
     )
 }

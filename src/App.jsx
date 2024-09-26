@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom"
 import Layout from "./layout/Layout"
 import AppThemeProvider from "./providers/AppThemeProvider"
-import LayoutProvider from "./providers/LayoutProvider.jsx/LayoutProvider"
+import LayoutProvider from "./providers/LayoutProvider/LayoutProvider"
 import Router from "./routes/Router"
 import UserProvider from "./providers/UserProvider"
 import 'leaflet/dist/leaflet.css';

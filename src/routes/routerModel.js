@@ -9,9 +9,9 @@ const ROUTES = {
     EDIT_CARD: "/edit-card",
     SIGNUP: "/signup",
     LOGIN: "/login",
-    USER_PROFILE: "/user",
-    EDIT_USER: "/edit-user",
-    SANDBOX: "/sandbox",
+    // USER_PROFILE: "/user",
+    // EDIT_USER: "/edit-user",
+    // SANDBOX: "/sandbox",
 };
 
 export default ROUTES;

@@ -11,7 +11,7 @@ export default function ErrorMessage({ message }) {
                         Oops... Something went wrong: {message}
                     </Typography>
                 </Grid>
-                <Grid item xs={12} md={8} justifyContent="center">
+                <Grid item justifyContent="center">
                     <AndroidIcon color="inherit" sx={{ fontSize: "100pt" }} />
                 </Grid>
             </Grid>

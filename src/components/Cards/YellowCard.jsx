@@ -9,7 +9,7 @@ import CardActionBarVariants from './CardLayout/CardActionBarVariants';
 export default function YellowCard({ cardData, variant = "standard" }) {
     const navigate = useNavigate();
     const [width, setWidth] = useState(variant === "display" ? 500 : 250);
-    const [height, setHeight] = useState(variant === "display" ? "100%" : "fit-content");
+    const [height, setHeight] = useState(variant === "display" ? "100%" : "auto");
 
     return (
         <Card sx={{
