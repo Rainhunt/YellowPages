@@ -7,7 +7,7 @@ export default function ScrollToTop() {
 
     const handleScroll = () => {
         const currentScrollY = window.scrollY;
-        setVisible(currentScrollY > 300); // Show button after scrolling down 300px
+        setVisible(currentScrollY > 300);
     };
 
     const scrollToTop = () => {

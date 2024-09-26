@@ -8,14 +8,14 @@ import CardActionBarVariants from './CardLayout/CardActionBarVariants';
 
 export default function YellowCard({ cardData, variant = "standard" }) {
     const navigate = useNavigate();
-    const [width, setWidth] = useState(variant === "display" ? 500 : 250);
+    const [width, setWidth] = useState(variant === "display" ? { xs: "100%" } : 250);
     const [height, setHeight] = useState(variant === "display" ? "100%" : "auto");
 
     return (
         <Card sx={{
             display: "flex",
             flexDirection: "column",
-            width: width,
+            width: { xs: width - 10, md: width },
             height: height,
             m: 2
         }}>

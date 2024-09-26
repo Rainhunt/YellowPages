@@ -13,7 +13,7 @@ export default function ViewCard() {
     return (
         <Centered sx={{ my: 5 }}>
             <CardProvider fetch={getCardData(id)} toRootOnDelete={true}>
-                <Box display="flex" justifyContent="center" alignItems="flex-start">
+                <Box display="flex" justifyContent="center" sx={{ flexDirection: { xs: "column", sm: "row" }, alignItems: { xs: "center", sm: "start" } }}>
                     <Box mr={2} width="300px">
                         <CardsStatus type={"card"} />
                         <CardMap />

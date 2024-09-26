@@ -8,7 +8,7 @@ import cardSchema from './cardSchema'
 import { useEffect } from 'react'
 import { getToken } from '../../services/jwtLocal'
 
-export default function CardForm({ isLoading, networkError, handleSubmit, setRef, card }) {
+export default function CardForm({ isLoading, handleSubmit, setRef, card }) {
     const { data, errors: validationErrors, setToken, handleChange, validateForm, onSubmit, onReset } = useForm(card ? card : initialCard, cardSchema, handleSubmit);
 
     useEffect(() => {
@@ -30,6 +30,7 @@ export default function CardForm({ isLoading, networkError, handleSubmit, setRef
             validateForm={validateForm}
             onSubmit={onSubmit}
             onReset={onReset}
+            sx={{ mb: 10 }}
         >
             <Field
                 label="title"

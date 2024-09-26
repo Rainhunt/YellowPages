@@ -19,7 +19,9 @@ export default function RightNavBar() {
             >
                 <DarkModeIcon />
             </IconButton>
-            {userData ? <ProfileMenu /> : <SigninButtons />}
+            <Box display={{ xs: "none", sm: "block" }}>
+                {userData ? <ProfileMenu /> : <SigninButtons />}
+            </Box>
         </Box>
     )
 }

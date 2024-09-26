@@ -42,7 +42,7 @@ export default function EditCard() {
     }, []);
 
     return (
-        <Centered sx={{ flexGrow: 1, flexDirection: "row" }}>
+        <Centered sx={{ flexGrow: 1, flexDirection: { xs: "column", sm: "row" } }}>
             <CardProvider>
                 {card ? <YellowCard cardData={card} variant="display" /> : <Spinner />}
             </CardProvider>

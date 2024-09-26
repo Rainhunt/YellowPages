@@ -30,9 +30,11 @@ export default function LeftNavBar() {
                     }}
                 />
             </NavBarLink>
-            <NavBarLink to={ROUTES.ABOUT}>About</NavBarLink>
-            {userData && <NavBarLink to={ROUTES.FAV_CARDS}>Fav</NavBarLink>}
-            {userData && userData.isBusiness && <NavBarLink to={ROUTES.MY_CARDS}>Mine</NavBarLink>}
+            <Box display={{ xs: "none", md: "block" }}>
+                <NavBarLink to={ROUTES.ABOUT}>About</NavBarLink>
+                {userData && <NavBarLink to={ROUTES.FAV_CARDS}>Fav</NavBarLink>}
+                {userData && userData.isBusiness && <NavBarLink to={ROUTES.MY_CARDS}>Mine</NavBarLink>}
+            </Box>
         </Box>
     )
 }

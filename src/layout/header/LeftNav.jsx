@@ -10,6 +10,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import SwitchAccountIcon from '@mui/icons-material/SwitchAccount';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 const marginRight = 2
 
@@ -23,12 +24,12 @@ export default function LeftNav() {
                 size="large"
                 color="inherit"
                 onClick={toggleDrawerOpen}
-                sx={{ width: "350px", maxWidth: "" }}
+                sx={{ width: "350px", maxWidth: "", px: 4 }}
             >
                 <ArrowBack />
             </IconButton>
             {userData && userData.isBusiness && <NavBarLink to={ROUTES.CREATE_CARD}>
-                <AddCircleIcon sx={{ mr: marginRight }} />
+                <AddCircleIcon sx={{ mx: marginRight }} />
                 Add Post
             </NavBarLink>}
             {!userData && <>
@@ -53,8 +54,11 @@ export default function LeftNav() {
                 <AssignmentIndIcon sx={{ mr: marginRight }} />
                 Mine
             </NavBarLink>}
-
             <Divider />
+            <NavBarLink to={ROUTES.ABOUT} onClick={toggleDrawerOpen}>
+                <InfoOutlinedIcon sx={{ mr: marginRight }} />
+                About
+            </NavBarLink>
         </Drawer>
     )
 }
