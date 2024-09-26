@@ -31,6 +31,8 @@ export default function CardsStatus({ type }) {
                 return < YellowCards cards={cards} />
             case "card":
                 return <YellowCard cardData={cards} />
+            case "display":
+                return <YellowCard cardData={cards} variant="display" />
         }
     }
     return null;

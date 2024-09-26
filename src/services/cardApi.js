@@ -30,7 +30,11 @@ export async function getMyCards(xAuthToken) {
 }
 
 export async function createCard(cardData, token) {
-    return await post(apiUrl, cardData, { "x-auth-token": token });
+    try {
+        return await post(apiUrl, cardData, { "x-auth-token": token });
+    } catch (err) {
+        return Promise.reject(err.message);
+    }
 }
 
 export async function editCard(cardData, token, id) {

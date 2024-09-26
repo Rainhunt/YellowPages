@@ -71,7 +71,12 @@ export default function CardProvider({ children, fetch, filter, searchBar }) {
     });
 
     const handleLike = useCallback(async (cardId) => {
-        return await patch(`${apiUrl}${cardId}`, {}, { "x-auth-token": token });
+        try {
+            return await patch(`${apiUrl}${cardId}`, {}, { "x-auth-token": token });
+        } catch (err) {
+            setSnack(err.message, "filled", "error");
+            return null;
+        }
     });
 
     return (

@@ -6,6 +6,7 @@ import favFilter from './favFilter';
 import CardSearch from '../../components/SearchBar/CardSearch';
 import { useUser } from '../../providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function FavoriteCards() {
     //validate page auth
